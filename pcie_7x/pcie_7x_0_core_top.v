@@ -58,17 +58,6 @@
 //--------------------------------------------------------------------------------
 
 `timescale 1ps/1ps
-/*
-CFG_DEV_ID list
-0x002E [blacklisted]
-0x0024 [blacklisted]
-0x002C
-0x002B
-0x002A
-
-full list: https://github.com/torvalds/linux/blob/master/drivers/net/wireless/ath/ath9k/pci.c#L24
-*/
-
 (* CORE_GENERATION_INFO = "pcie_7x_0,pcie_7x_v3_3_20,{LINK_CAP_MAX_LINK_SPEED=1,LINK_CAP_MAX_LINK_WIDTH=1,PCIE_CAP_DEVICE_PORT_TYPE=0001,DEV_CAP_MAX_PAYLOAD_SUPPORTED=0,USER_CLK_FREQ=1,REF_CLK_FREQ=0,MSI_CAP_ON=FALSE,MSI_CAP_MULTIMSGCAP=0,MSI_CAP_MULTIMSG_EXTENSION=0,MSIX_CAP_ON=FALSE,TL_TX_RAM_RADDR_LATENCY=0,TL_TX_RAM_RDATA_LATENCY=2,TL_RX_RAM_RADDR_LATENCY=0,TL_RX_RAM_RDATA_LATENCY=2,TL_RX_RAM_WRITE_LATENCY=0,\
 VC0_TX_LASTPACKET=31,VC0_RX_RAM_LIMIT=3FF,VC0_TOTAL_CREDITS_PH=4,VC0_TOTAL_CREDITS_PD=32,VC0_TOTAL_CREDITS_NPH=4,VC0_TOTAL_CREDITS_NPD=8,VC0_TOTAL_CREDITS_CH=72,VC0_TOTAL_CREDITS_CD=370,VC0_CPL_INFINITE=TRUE,DEV_CAP_PHANTOM_FUNCTIONS_SUPPORT=0,DEV_CAP_EXT_TAG_SUPPORTED=FALSE,LINK_STATUS_SLOT_CLOCK_CONFIG=FALSE,DISABLE_LANE_REVERSAL=TRUE,DISABLE_SCRAMBLING=FALSE,DSN_CAP_ON=FALSE,REVISION_ID=16,VC_CAP_ON=FALSE}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
@@ -90,7 +79,7 @@ module pcie_7x_0_core_top # (
   parameter         AER_CAP_MULTIHEADER = "FALSE",
   parameter [11:0]  AER_CAP_NEXTPTR = 12'h130,
   parameter [23:0]  AER_CAP_OPTIONAL_ERR_SUPPORT = 24'h000000,
-  parameter         AER_CAP_ON = "TRUE",
+  parameter         AER_CAP_ON = "FALSE",
   parameter         AER_CAP_PERMIT_ROOTERR_UPDATE = "FALSE",
 
   parameter [31:0]  BAR0 = 32'hFFFFC004, //   FFFFF001,
@@ -131,8 +120,8 @@ module pcie_7x_0_core_top # (
   parameter [10:0]  ENABLE_MSG_ROUTE = 11'b00000000000,
   parameter         ENABLE_RX_TD_ECRC_TRIM = "FALSE",
   parameter [31:0]  EXPANSION_ROM = 32'h00000000,
-  parameter [5:0]   EXT_CFG_CAP_PTR = 6'h3F,
-  parameter [9:0]   EXT_CFG_XP_CAP_PTR = 10'h3FF,
+  parameter [5:0]   EXT_CFG_CAP_PTR = 6'h2A,
+  parameter [9:0]   EXT_CFG_XP_CAP_PTR = 10'h2A,
   parameter [7:0]   HEADER_TYPE = 8'h00,
   parameter [7:0]   INTERRUPT_PIN = 8'h1,
 
@@ -259,7 +248,7 @@ module pcie_7x_0_core_top # (
 
   parameter [11:0]  VSEC_BASE_PTR = 12'h130,
   parameter [11:0]  VSEC_CAP_NEXTPTR = 12'h000,
-  parameter         VSEC_CAP_ON = "TRUE",
+  parameter         VSEC_CAP_ON = "FALSE",
 
   parameter         DISABLE_ASPM_L1_TIMER = "FALSE",
   parameter         DISABLE_BAR_FILTERING = "FALSE",
